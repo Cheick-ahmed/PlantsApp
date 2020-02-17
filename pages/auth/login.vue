@@ -1,17 +1,17 @@
 <template>
 	<div class="container py-16">
 		<div class="flex lg:flex-no-wrap items-center justify-between">
-			<div class="w-full lg:w-7/12 ">
+			<div class="w-full lg:w-7/12 -mt-12">
 				<img src="@/assets/img/login.svg" alt="" class="w-full">
 			</div>
 			<div class="w-full lg:w-4/12">
-				<form>
+				<form @submit.prevent="submit">
 					<div class="w-full mb-4">
-						<input type="email" class="block w-full rounded-full p-2 px-3 text-sm text-gray-800 border-2" placeholder="Email">
+						<input type="email" class="block w-full rounded-full p-2 px-3 text-sm text-gray-800 border-2" placeholder="Email" v-model="form.email">
 					</div>
 
 					<div class="w-full mb-4">
-						<input type="text" class="block w-full rounded-full p-2 px-3 text-sm text-gray-800 border-2" placeholder="Password">
+						<input type="password" class="block w-full rounded-full p-2 px-3 text-sm text-gray-800 border-2" placeholder="Password" v-model="form.password">
 					</div>
 
 					<div class="mb-8">
@@ -30,6 +30,20 @@
 </template>
 <script>
 	export default {
-		//
+		data () {
+			return {
+				form : {
+					'email' : '',
+					'password' : ''
+				}
+			}
+		},
+		methods : {
+			async submit() {
+				await this.$auth.loginWith('local', {
+					data : this.form
+				})
+			}
+		}
 	}
 </script>

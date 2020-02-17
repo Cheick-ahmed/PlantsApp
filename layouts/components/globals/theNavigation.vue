@@ -8,7 +8,7 @@
 			</div>
 
 			<div class="">
-				<template v-if="!loggedIn">
+				<template v-if="!$auth.loggedIn">
 					<nuxt-link :to="{ name : 'auth-register' }" class="capitalize mr-4 text-gray-800">
 						register
 					</nuxt-link>
