@@ -90,7 +90,7 @@
 				</form>
 			</div>
 
-			<div class="w-full lg:w-6/12 ">
+			<div class="hidden lg:block w-full lg:w-6/12 ">
 				<img src="@/assets/img/register.svg" alt="" class="w-full">
 			</div>
 		</div>

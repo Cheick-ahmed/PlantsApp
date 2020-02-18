@@ -1,11 +1,11 @@
 <template>
-	<div class="container py-16">
-		<div class="flex lg:flex-no-wrap items-center justify-between">
-			<div class="w-full lg:w-7/12 -mt-16">
+	<div class="container py-16 pb-0 ">
+		<div class="flex lg:flex-no-wrap py-16 pb-0  items-center justify-between">
+			<div class="hidden lg:block w-full lg:w-7/12 -mt-16">
 				<img src="@/assets/img/login.svg" alt="" class="w-full">
 			</div>
-			<div class="w-full lg:w-4/12">
-				<form @submit.prevent="submit">
+			<div class="w-full lg:w-4/12 flex justify-center">
+				<form @submit.prevent="submit" class="py-16 lg:w-full">
 					<div class="w-full mb-4">
 						<input type="email" 
 						class="block w-full rounded-full p-2 px-3 text-sm text-gray-800 border-2" 
@@ -19,7 +19,7 @@
 						</template>
 					</div>
 
-					<div class="w-full mb-4">
+					<div class="w-full mb-6">
 						<input type="password" class="block w-full rounded-full p-2 px-3 text-sm text-gray-800 border-2" placeholder="Password" v-model="form.password" 
 						:class="{ 'border-red-500' : validation.password}">
 						<template v-if="validation.password">
