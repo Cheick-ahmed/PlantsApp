@@ -1,14 +1,12 @@
 <template>
 	<div class="relative">
 		<button @click.prevent="show =! show" class="block flex items-center flex-no-wrap focus:outline-none">
-			<img 
-			src="@/assets/img/maria_gardner.jpg" 
-			alt="User" 
-			class="object-cover object-top h-12 w-12 shadow-xl rounded-full  border-2"
-			>
-			<span class="font-montserrat font-semibold capitalize">
+			<span class="font-montserrat font-semibold capitalize mr-2">
 				{{ $auth.user.last_name }}
 			</span>
+			<svg xmlns="http://www.w3.org/2000/svg" class="fill-current text-gray-500 h-6 w-6" viewBox="0 0 20 20">
+				<path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+			</svg>
 		</button>
 		<div class="mt-4 absolute right-0  shadow-2xl font-rubik" v-if="show">
 			<div class="bg-gray-800 rounded-lg py-4 px-6 w-full text-xs uppercase text-white ">
