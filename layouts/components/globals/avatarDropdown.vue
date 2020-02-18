@@ -19,12 +19,12 @@
 					Mon compte
 				</nuxt-link>
 
-				<nuxt-link :to="{ name : 'auth-me' }" class="flex items-center block py-3">
+				<a href="#" @click.prevent="logout" class="flex items-center block py-3">
 					<svg class="fill-current text-red-500 h-4 w-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
 						<path fill-rule="evenodd" d="M4.16 4.16l1.42 1.42A6.99 6.99 0 0 0 10 18a7 7 0 0 0 4.42-12.42l1.42-1.42a9 9 0 1 1-11.69 0zM9 0h2v8H9V0z"/>
 					</svg>
 					Déconnexion
-				</nuxt-link>
+				</a>
 			</div>
 		</div>
 	</div>
@@ -35,6 +35,11 @@
 		data () {
 			return {
 				show : false
+			}
+		},
+		methods : {
+			async logout() {
+				await this.$auth.logout()
 			}
 		}
 	}

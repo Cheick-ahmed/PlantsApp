@@ -1,21 +1,37 @@
 <template>
 	<div class="container py-16">
 		<div class="flex lg:flex-no-wrap items-center justify-between">
-			<div class="w-full lg:w-7/12 -mt-12">
+			<div class="w-full lg:w-7/12 -mt-16">
 				<img src="@/assets/img/login.svg" alt="" class="w-full">
 			</div>
 			<div class="w-full lg:w-4/12">
 				<form @submit.prevent="submit">
 					<div class="w-full mb-4">
-						<input type="email" class="block w-full rounded-full p-2 px-3 text-sm text-gray-800 border-2" placeholder="Email" v-model="form.email">
+						<input type="email" 
+						class="block w-full rounded-full p-2 px-3 text-sm text-gray-800 border-2" 
+						placeholder="Email" v-model="form.email" 
+						:class="{ 'border-red-500' : validation.email }">
+
+						<template v-if="validation.email">
+							<div class="ml-2 text-xs font-semibold text-red-500">
+								{{ validation.email[0] }}
+							</div>
+						</template>
 					</div>
 
 					<div class="w-full mb-4">
-						<input type="password" class="block w-full rounded-full p-2 px-3 text-sm text-gray-800 border-2" placeholder="Password" v-model="form.password">
+						<input type="password" class="block w-full rounded-full p-2 px-3 text-sm text-gray-800 border-2" placeholder="Password" v-model="form.password" 
+						:class="{ 'border-red-500' : validation.password}">
+						<template v-if="validation.password">
+							<div class="ml-2 text-xs font-semibold text-red-500">
+								{{ validation.password[0] }}
+							</div>
+						</template>
 					</div>
 
-					<div class="mb-8">
-						<button type="submit" class="px-10 py-3 bg-green-700 rounded-full text-xs font-semibold uppercase text-white">
+					<div class="mb-6">
+						<button type="submit" 
+						class="px-10 py-2 bg-green-700 rounded-full text-xs font-semibold uppercase text-white">
 							Login
 						</button>
 					</div>
@@ -35,14 +51,22 @@
 				form : {
 					'email' : '',
 					'password' : ''
-				}
+				},
+				validation : {}
 			}
 		},
 		methods : {
 			async submit() {
-				await this.$auth.loginWith('local', {
-					data : this.form
-				})
+				try {
+					await this.$auth.loginWith('local', {
+						data : this.form
+					}) 
+					
+				} catch (e) {
+					if (e.response.status === 422) {
+						this.validation = e.response.data.errors
+					}
+				}
 			}
 		}
 	}
