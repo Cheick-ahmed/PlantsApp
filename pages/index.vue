@@ -1,6 +1,6 @@
 <template>
   <div class="bg-gray-100 h-full">
-    <div class="container flex lg:flex-no-wrap">
+    <div class="container flex lg:flex-no-wrap py-8 lg:py-0">
       <div class="w-full lg:w-8/12 py-16 lg:py-32">
         <div class="font-montserrat mb-12 lg:mb-16">
           <p class="text-5xl text-green-700 font-medium">Let's find out more about</p>
