@@ -68,6 +68,10 @@ export default {
   ** Build configuration
   */
   build: {
+    transpile : [
+    'vue-instantsearch',
+    'instantsearch.js/es'
+    ],
     postcss : {
       plugins : {
         tailwindcss : './tailwind.config.js'

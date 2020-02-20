@@ -116,7 +116,7 @@
 					'n_vernaculaire': '',
 					'ng_latin' : '',
 					'ne_latin' : '',
-					'is_toxic' : '',
+					'is_toxic' : false,
 				}
 			}
 		},

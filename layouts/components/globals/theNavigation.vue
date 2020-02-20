@@ -22,22 +22,25 @@
 
 			<div class="py-16 pt-10 lg:py-0 lg:block lg:flex lg:items-center  transition duration-500" :class="!isOpen ? 'hidden' : 'block' ">
 				<template v-if="$auth.loggedIn">
+					<nuxt-link :to="{ name : 'search' }" class="block text-lg capitalize lg:mr-8 text-gray-800 mb-4 lg:mb-0 py-6 lg:px-4">
+						Search
+					</nuxt-link>
 					<avatar-dropdown />
 				</template>
 
 				<template v-else>
 					<nuxt-link :to="{ name : 'auth-register' }" 
 					class="block capitalize mr-4 text-gray-800 mb-4 lg:mb-0 py-2 rounded-lg">
-						register
-					</nuxt-link>
-					<nuxt-link :to="{ name : 'auth-login' }" 
-					class="block capitalize lg:px-8 py-2 lg:rounded-full  lg:border lg:border-green-500 text-gray-800 ">
-						login
-					</nuxt-link>
-				</template>
-			</div>
-		</div>
+					register
+				</nuxt-link>
+				<nuxt-link :to="{ name : 'auth-login' }" 
+				class="block capitalize lg:px-8 py-2 lg:rounded-full  lg:border lg:border-green-500 text-gray-800 ">
+				login
+			</nuxt-link>
+		</template>
 	</div>
+</div>
+</div>
 </template>
 
 <script>

@@ -55,7 +55,7 @@
 		Nom genre latin
 	</label>
 	<input type="text" v-model="plant.ng_latin"
-	class="block lowercase italic mb-2 w-full shadow rounded p-3 text-sm text-gray-700 focus:shadow-lg transition duration-500"
+	class="block lowercase mb-2 w-full shadow rounded p-3 text-sm text-gray-700 focus:shadow-lg transition duration-500"
 	:class=" { 'border  border-red-500' : validation.ng_latin } "
 	>
 	<template v-if="validation.ng_latin">
