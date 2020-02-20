@@ -31,7 +31,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-  '~/plugins/algolias'
+  '~/plugins/algolia'
   ],
   /*
   ** Nuxt.js dev-modules
