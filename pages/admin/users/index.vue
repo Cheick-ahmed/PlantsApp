@@ -14,8 +14,8 @@
 	</div>
 
 	<div class="grid grid-cols-2 gap-4 mb-12">
-		<div class="border-r text- font-rubik">
-			<h3 class="mb-2">Nombre d'utilisateurs</h3>
+		<div class="border-r text-center font-rubik">
+			<h3 class=" text-green-700 font-semibold">Nombre d'utilisateurs</h3>
 			<div class="text-green-700 font-semibold text-xl">
 				<template v-if="users.data.length">
 					{{ users.data.length }}
@@ -26,7 +26,9 @@
 			</div>
 		</div>
 		<div class=" text-center font-rubik">
-			<nuxt-link :to="{ name : 'admin' }" class="mb-2">Demande(s) en attente</nuxt-link>
+			<nuxt-link :to="{ name : 'admin' }" class=" text-red-600 font-semibold">
+				Demande(s) en attente
+			</nuxt-link>
 			<div class="text-red-600 font-semibold text-xl">
 				<template v-if="users.meta.not_confirmed ">
 					{{ users.meta.not_confirmed.length }}

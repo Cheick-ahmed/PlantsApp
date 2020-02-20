@@ -32,20 +32,25 @@
 					<div class="mb-6">
 						<button type="submit" 
 						class="px-10 py-2 bg-green-700 rounded-full text-xs font-semibold uppercase text-white">
-							Login
-						</button>
-					</div>
+						Login
+					</button>
+				</div>
 
-					<div class="font-semibold text-sm">
-						Already got an account? <nuxt-link :to="{ name: 'auth-login' }" class="text-blue-500"> Sign in here</nuxt-link>
-					</div>
-				</form>
-			</div>
+				<div class="font-semibold text-sm">
+					Already got an account? <nuxt-link :to="{ name: 'auth-login' }" class="text-blue-500"> Sign in here</nuxt-link>
+				</div>
+			</form>
 		</div>
 	</div>
+</div>
 </template>
 <script>
 	export default {
+		head () {
+			return {
+				title : 'Login'
+			}
+		},
 		data () {
 			return {
 				form : {
