@@ -13,6 +13,7 @@
   "dependencies": {
     "@nuxtjs/auth": "^4.8.5",
     "@nuxtjs/axios": "^5.3.6",
+    "algoliasearch": "^4.0.3",
     "dotenv": "^8.2.0",
     "nuxt": "^2.0.0",
     "tailwindcss": "^1.2.0",
