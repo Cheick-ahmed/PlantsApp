@@ -4,6 +4,13 @@
 
 @tailwind utilities;
 
+.layout-enter-active, .layout-leave-active {
+	transition: opacity .3s
+}
+.layout-enter, .layout-leave-active {
+	opacity: 0
+}
+
 .container {
 	@apply w-10/12 mx-auto;
 }

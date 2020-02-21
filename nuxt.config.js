@@ -63,6 +63,9 @@ export default {
           user: { url: 'auth/me', method: 'get', propertyName: 'data' }
         }
       }
+    },
+    redirect : {
+      login : '/auth/login'
     }
   },
   /*
