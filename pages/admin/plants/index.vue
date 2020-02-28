@@ -15,7 +15,7 @@
 		</div>
 	</div>
 
-	<div v-if="plants.length">
+	<div v-if="plants.data.length">
 		<table class="min-w-full">
 			<thead>
 				<tr>
@@ -29,7 +29,7 @@
 				</tr>
 			</thead>
 			<tbody class="bg-white">
-				<tr v-for="plant in plants">
+				<tr v-for="plant in plants.data">
 					<td class="px-2 py-5 border-b-4 border-gray-100 bg-white text-sm">
 						<div class="h-4 w-4 rounded-full mx-auto" :class=" plant.is_toxic ? 'bg-red-500' : 'bg-teal-400' "
 						></div>
@@ -66,19 +66,39 @@
 				</tr>
 			</tbody>
 		</table>
+		<div class="flex justify-end" v-if="plants.meta">
+			<pagination :meta="plants.meta" v-on:pagination:switched="getPlants"/>
+		</div>
 	</div>
 </div>
 </template>
 
 <script>
+	import pagination from '../components/pagination'
 	export default {
 		layout : 'admin',
+		components : {
+			pagination
+		},
 		data () {
 			return {
-				plants : []
+				plants : null
 			}
 		},
+
+		async asyncData ({app}) {
+			let plants = await app.$axios.get('plants')
+			return { plants : plants.data}
+		},
 		methods : {
+			async getPlants (page = 1) {
+				let plants = await this.$axios.get('plants', {
+					params : {
+						page : page
+					}
+				})
+				this.plants = plants.data
+			},
 			async deletePlant (plant) {
 				if ( !window.confirm('Êtes-vous sûr de supprimer cette plante ?')) {
 					return
@@ -86,10 +106,6 @@
 				await this.$axios.delete(`plants/${plant.slug}`)
 				this.plants = this.plants.filter((p) => p.slug !== plant.slug)
 			}
-		},
-		async asyncData ({app}) {
-			let plants = await app.$axios.get('plants')
-			return { plants : plants.data.data }
 		}
 	}
 </script>
