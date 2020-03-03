@@ -22,6 +22,12 @@
 
 <script>
 	export default {
+		middleware : 'auth',
+		head () {
+			return {
+				title : 'Search'
+			}
+		},
 		props : {
 			plant : {
 				required : true,

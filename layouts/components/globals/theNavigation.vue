@@ -22,7 +22,10 @@
 
 			<div class="py-16 pt-10 lg:py-0 lg:block lg:flex lg:items-center  transition duration-500" :class="!isOpen ? 'hidden' : 'block' ">
 				<template v-if="$auth.loggedIn">
-					<nuxt-link :to="{ name : 'search' }" class="block text-lg capitalize lg:mr-8 text-gray-800 mb-4 lg:mb-0 py-6 lg:px-4">
+					<nuxt-link :to="{ name : 'plants' }" class="block text-lg capitalize lg:mr-2 text-gray-800  mb-4 lg:mb-0 py-6 lg:px-2">
+						Plants
+					</nuxt-link>
+					<nuxt-link :to="{ name : 'search' }" class="block text-lg capitalize lg:mr-6 text-gray-800 mb-4 lg:mb-0 py-6 lg:px-2">
 						Search
 					</nuxt-link>
 					<avatar-dropdown />

@@ -37,7 +37,9 @@
 				</div>
 
 				<div class="font-semibold text-sm">
-					Already got an account? <nuxt-link :to="{ name: 'auth-login' }" class="text-blue-500"> Sign in here</nuxt-link>
+					<nuxt-link :to="{ name: 'auth-register' }" class="text-blue-500">
+						Create new account
+					</nuxt-link>
 				</div>
 			</form>
 		</div>
@@ -46,6 +48,7 @@
 </template>
 <script>
 	export default {
+		auth :'guest',
 		head () {
 			return {
 				title : 'Login'
