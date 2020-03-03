@@ -1,5 +1,8 @@
 <template>
 	<div class="mb-6 shadow hover:shadow-xl transition-all duration-500">
+		<nuxt-link :to=" { name : 'plants-slug', params : { slug : plant.slug }} ">
+			<img class="w-full object-cover object-center w-full" :src="plant.display.data.path" :alt="plant.display.data.name">
+		</nuxt-link>
 		
 		<div class="px-6 py-4 font-montserrat">
 			<div class="font-semibold text-xl text-gray-900 mb-2">

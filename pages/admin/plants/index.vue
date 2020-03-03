@@ -66,9 +66,9 @@
 				</tr>
 			</tbody>
 		</table>
-		<div class="flex justify-end" v-if="plants.meta">
+<!-- 		<div class="flex justify-end" v-if="plants.meta">
 			<pagination :meta="plants.meta" v-on:pagination:switched="getPlants"/>
-		</div>
+		</div> -->
 	</div>
 </div>
 </template>
@@ -82,7 +82,7 @@
 		},
 		data () {
 			return {
-				plants : null
+				plants : []
 			}
 		},
 
@@ -97,14 +97,16 @@
 						page : page
 					}
 				})
-				this.plants = plants.data
+				// this.plants = plants.data
 			},
 			async deletePlant (plant) {
 				if ( !window.confirm('Êtes-vous sûr de supprimer cette plante ?')) {
 					return
 				}
 				await this.$axios.delete(`plants/${plant.slug}`)
-				this.plants = this.plants.filter((p) => p.slug !== plant.slug)
+				this.plants = this.plants.filter((p) => {
+					return p.id !== plant.id
+				})			
 			}
 		}
 	}

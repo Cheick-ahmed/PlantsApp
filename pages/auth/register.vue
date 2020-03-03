@@ -1,6 +1,6 @@
 <template>
 	<div class="container py-16"> 
-		<div class="flex lg:flex-no-wrap items-center justify-between">
+		<div class="flex lg:flex-no-wrap items-center justify-between"> 
 			<div class="w-full lg:w-5/12">
 				<form @submit.prevent="submit">
 					<div class="flex flex-wrap lg:flex-no-wrap">
@@ -105,6 +105,7 @@
 		},
 		data () {
 			return {
+				user  : {},
 				form : {
 					'first_name' : '',
 					'last_name' : '',
@@ -120,13 +121,14 @@
 			async submit() {
 				try {
 					await this.$axios.post('/auth/register', this.form).then((res) => {
-						this.$router.push({name : 'auth/login'})
+						//
 					})
 				} catch (e) {
 					if (e.response.status === 422) {
 						this.validation = e.response.data.errors
 					}
 				}
+				this.$router.push({ name : 'auth-dashboard' })
 			}
 		}
 	}
