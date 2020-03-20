@@ -2,8 +2,8 @@ let env = require('dotenv').config()
 
 export default {
   server: {
-    port: 3333, // par défaut: 3000
-    host: '0.0.0.0' // par défaut: localhost
+    port: env.parsed.NUXT_PORT, // par défaut: 3000
+    host: env.parsed.NUXT_HOST
   },
   mode: 'universal',
   /*
