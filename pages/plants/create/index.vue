@@ -1,28 +1,6 @@
 <template>
-	<div class="my-6 lg:my-12 pt-16">
-		<template v-if="image">
-			<div class="w-full sm:w-8/12 mx-auto mb-16">
-				<img :src="image.path" :alt="image.name" class="object-cover object-center w-full">
-			</div>
-		</template>
-
-		<template v-else>
-			<div class="mb-12 w-full sm:w-6/12 mx-auto">
-				<form enctype="multipart/form-data" name="image" novalidate @dragover.prevent="handleDragOver" @dragleave.prevent="handleDragLeave" :class=" { 'border-gray-700' : dragging } " class="p-12 border-2 rounded-lg border-gray-400 border-dashed relative flex items-center justify-center mb-4 transition-all duration-300">
-					<input type="file" class="absolute h-full w-full top-0 left-0 opacity-0" @change="startUpload">
-					<template v-if="dragging">
-						{{ draggingCount }} fichier(s) séléctionné(s)
-					</template>
-					<template v-else>
-						<div class="text-gray-500">
-							Glissez ou <span class="text-blue-500"> Cliquez</span>
-						</div>
-					</template>
-				</form>
-			</div>
-		</template>
-
-		<div class="w-full lg:w-6/12 mx-auto">
+	<div class="transition-all duration-1000 container my-6 lg:my-12 pt-16" :class=" image ? 'grid lg:grid-cols-5 gap-8' : '' ">
+		<div class="transition-all duration-1000" :class=" image ? 'lg:col-span-3' : '' " v-if="image">
 			<form class="font-rubik" @submit.prevent="createPlant">
 				<div class="w-full mb-8">
 					<label for="familly" class="block mb-2 text-gray-800 text-xs font-medium" :class=" { 'text-red-500' : validation.family }">
@@ -59,10 +37,8 @@
 						</div>
 					</template>
 				</div>
-
-
 				<div class="w-full mb-8">
-					<label for="ng_latin" class="block mb-2 text-gray-800 text-xs uppercase font-medium"
+					<label for="ne_latin" class="block mb-2 text-gray-800 text-xs uppercase font-medium"
 					:class=" { 'text-red-500' : validation.ne_latin }">
 					Nom espece latin
 				</label>
@@ -77,10 +53,14 @@
 				</template>
 			</div>
 
-			<div class="mb-8">
-				<label for="ng_latin" class="flex flex-no-wrap items-end block mb-2 text-gray-800 text-xs uppercase font-medium" :class=" { 'text-red-500' : validation.is_toxic } ">
+			<div class="mb-8 flex justify-between">
+				<label for="is_toxic" class="flex flex-no-wrap items-end block mb-2 text-gray-800 text-xs uppercase font-medium" :class=" { 'text-red-500' : validation.is_toxic } ">
 					<input type="checkbox" class="outline-none mr-2" v-model="form.is_toxic">
-					Toxicité
+					<span>Toxicité</span>
+				</label>
+				<label for="public" class="flex flex-no-wrap items-end block mb-2 text-gray-800 text-xs uppercase font-medium" :class=" { 'text-red-500' : validation.public } ">
+					<input type="checkbox" class="outline-none mr-2" v-model="form.public">
+					<span>Public</span>
 				</label>
 			</div>
 
@@ -90,6 +70,29 @@
 				</button>
 			</div>
 		</form>
+	</div>
+	<div class="mx-auto transition-all duration-1000" :class=" image ? 'lg:col-span-2' : 'w-full lg:w-8/12' ">
+		<template v-if="image">
+			<div class="py-6 mb-16">
+				<img :src="image.path" :alt="image.name" class="object-cover object-center w-full shadow rounded">
+			</div>
+		</template>
+
+		<template v-else>
+			<div class="py-6">
+				<form enctype="multipart/form-data" name="image" novalidate @dragover.prevent="handleDragOver" @dragleave.prevent="handleDragLeave" :class=" { 'border-gray-700' : dragging } " class="p-12 border-2 rounded-lg border-gray-400 border-dashed relative flex items-center justify-center mb-4 transition-all duration-300">
+					<input type="file" class="absolute h-full w-full top-0 left-0 opacity-0" @change="startUpload">
+					<template v-if="dragging">
+						{{ draggingCount }} fichier(s) séléctionné(s)
+					</template>
+					<template v-else>
+						<div class="text-gray-500">
+							Glissez ou <span class="text-blue-500"> Cliquez</span>
+						</div>
+					</template>
+				</form>
+			</div>
+		</template>
 	</div>
 </div>
 </template>
@@ -113,7 +116,8 @@
 					n_vernaculaire : '',
 					ng_latin : '',
 					ne_latin : '',
-					is_toxic  : false
+					is_toxic  : false,
+					public : false,
 				},
 			}
 		},
@@ -137,6 +141,7 @@
 					ng_latin : this.form.ng_latin,
 					ne_latin : this.form.ne_latin,
 					is_toxic : this.form.is_toxic,
+					public : this.form.public,
 					image_id : this.image.id
 				})
 				this.$router.push({ name : 'dashboard' })
