@@ -5,9 +5,9 @@
   "author": "Cheick-ahmed",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "cross-env NUXT_HOST=0.0.0.0 NUXT_PORT=30333 nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "start": "cross-env NUXT_HOST=0.0.0.0 NUXT_PORT=3333 nuxt start",
     "generate": "nuxt generate"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "vue-instantsearch": "^2.7.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.2",
     "node-sass": "^4.13.1",
     "sass-loader": "^8.0.2"
   }
