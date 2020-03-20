@@ -1,0 +1,61 @@
+<template>
+	<div class="lg:flex lg:items-center lg:justify-between bg-gray-800 px-4 py-6 mb-8 rounded">
+		<div class="flex-1 min-w-0">
+			<h2 class="text-2xl font-bold leading-7 text-gray-300 sm:text-3xl sm:leading-9 sm:truncate">
+				{{ plant.n_vernaculaire || 'Sans titre' }}
+			</h2>
+			<div class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap">
+				<div class="mt-2 flex items-center text-sm leading-5 text-gray-500 sm:mr-6">
+					<template v-if="plant.is_toxic">
+						Toxique
+					</template>
+					<template v-else>
+						Non toxique
+					</template>
+				</div>
+			</div>
+		</div>
+		<div class="mt-5 flex lg:mt-0 lg:ml-4">
+			<span class="hidden sm:block shadow-sm rounded-md">
+				<nuxt-link :to="{name : 'plants-slug-edit', params : {slug: plant.slug}}" type="button" class="inline-flex items-center px-4 py-2 border border-blue-800 text-sm leading-5 font-medium rounded-md text-gray-300 bg-blue-900 hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-900 active:text-gray-800 active:bg-gray-50 transition duration-150 ease-in-out">
+					<svg class="-ml-1 mr-2 h-5 w-5 text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+						<path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+					</svg>
+					Edit
+				</nuxt-link>
+			</span>
+			<span class="hidden sm:block ml-3 shadow-sm rounded-md">
+				<a href="#" @click.prevent="deleteplant" type="button" class="inline-flex items-center px-4 py-2 border text-sm leading-5 font-medium rounded-md text-red-700 bg-white hover:text-red-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-red-800 active:bg-gray-50 active:text-red-800 transition duration-150 ease-in-out">
+					<svg class="-ml-1 mr-2 h-4 w-4 text-red-500" fill="currentColor" viewBox="0 0 20 20">
+						<path d="M0 2C0 .9.9 0 2 0h16a2 2 0 0 1 2 2v2H0V2zm1 3h18v13a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V5zm6 2v2h6V7H7z"/>
+					</svg>
+					Delete
+				</a>
+			</span>
+		</div>
+	</div>
+</template>
+
+<script>
+	export default {
+		props : {
+			plant : {
+				required : true,
+				type : Object 
+			}
+		},
+		methods : {
+			async deleteplant() {
+				if (!window.confirm('Are sure you want to delete this plant ?')) {
+					return 
+				}
+				try {
+					await this.$axios.delete(`plants/${this.plant.slug}`)
+					this.$emit('deleted', this.plant)
+				} catch (e) {
+					console.log(e.response.data)
+				}
+			}
+		}
+	}
+</script>

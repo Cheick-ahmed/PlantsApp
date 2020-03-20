@@ -104,9 +104,7 @@
 					return
 				}
 				await this.$axios.delete(`plants/${plant.slug}`)
-				this.plants = this.plants.filter((p) => {
-					return p.id !== plant.id
-				})			
+				this.plants.data = this.plants.data.filter((p) => p.id !== plant.id )		
 			}
 		}
 	}

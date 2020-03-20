@@ -1,5 +1,5 @@
 <template>
-	<div class="py-16">
+	<div class="container py-16">
 		<div v-if="alert.status === true" class="mb-12">
 			<alert :status="alert.status" :message="alert.message" />
 		</div>

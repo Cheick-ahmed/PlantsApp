@@ -10,11 +10,11 @@
 		</button>
 		<div class="mt-4 absolute right-0  shadow-2xl font-rubik" v-if="show">
 			<div class="bg-gray-800 rounded-lg py-4 px-6 w-full text-xs uppercase text-white ">
-				<nuxt-link :to="{ name : 'admin' }" class="flex items-center block py-3">
+				<nuxt-link :to="{ name : 'dashboard' }" class="flex items-center block py-3">
 					<svg xmlns="http://www.w3.org/2000/svg" class="fill-current h-4 w-4 mr-4"  viewBox="0 0 20 20">
 						<path d="M0 6l10-6 10 6v2H0V6zm0 12h20v2H0v-2zm2-2h16v2H2v-2zm0-8h4v8H2V8zm6 0h4v8H8V8zm6 0h4v8h-4V8z"/>
 					</svg>
-					Admin
+					Dashboard
 				</nuxt-link>
 				<nuxt-link :to="{ name : 'auth-me' }" class="flex items-center block py-3">
 					<svg class="fill-current h-4 w-4 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

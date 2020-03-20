@@ -1,11 +1,11 @@
 <template>
-	<div class="container py-16 pb-0 ">
-		<div class="flex lg:flex-no-wrap py-16 pb-0  items-center justify-between">
-			<div class="hidden lg:block w-full lg:w-7/12 -mt-16">
+	<div class="">
+		<div class="container flex items-center justify-center lg:justify-between py-32 lg:py-10">
+			<div class="hidden order-first lg:block w-full lg:w-7/12">
 				<img src="@/assets/img/login.svg" alt="" class="w-full">
 			</div>
 			<div class="w-full lg:w-4/12 flex justify-center">
-				<form @submit.prevent="submit" class="py-16 lg:w-full">
+				<form @submit.prevent="submit" class="py-16 w-full">
 					<div class="w-full mb-4">
 						<input type="email" 
 						class="block w-full rounded-full p-2 px-3 text-sm text-gray-800 border-2" 
@@ -67,7 +67,8 @@
 				try {
 					await this.$auth.loginWith('local', {
 						data : this.form
-					}) 
+					})
+					
 					
 				} catch (e) {
 					if (e.response.status === 422) {
