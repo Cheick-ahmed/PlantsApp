@@ -25,7 +25,6 @@
 					<th class="px-5 py-3 text-left">N vernaculaire</th>
 					<th class="px-5 py-3 text-left">N.G latin</th>
 					<th class="px-5 py-3 text-left">N.E latin</th>
-
 				</tr>
 			</thead>
 			<tbody class="bg-white">

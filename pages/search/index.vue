@@ -12,12 +12,9 @@
 				placeholder="Search plants"
 				/>
 			</div>
-			<div>
-				<!-- <ais-refinement-list  attribute="is_toxic"/> -->
-			</div>
-			<div class="w-full">
+			<div class="w-full lg:w-9/12 mx-auto">
 				<ais-hits :class-names=" { 
-					'ais-Hits-list' : 'grid grid-cols-1 lg:grid-cols-4 gap-4',
+					'ais-Hits-list' : 'grid grid-cols-1 row-gap-12',
 				} ">
 					<div slot="item" slot-scope="{item}">
 						<plant-card :plant="item[0]" />
